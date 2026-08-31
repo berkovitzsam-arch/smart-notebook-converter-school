@@ -3,7 +3,7 @@ import { rasterizePdf } from "./pdf";
 import { imageToPage, makePreview, u8Blob, rasterizeSvg } from "./image";
 import { buildNotebook } from "./notebook";
 import { openNotebook, saveNotebook, type EditableNotebook } from "./notebookEdit";
-import { parseOpenState } from "./openwith";
+import { parseOpenState, type OpenWithState } from "./openwith";
 import * as drive from "./drive";
 import type { Page, Stroke, TextBox, Annotation } from "./types";
 
@@ -129,9 +129,32 @@ async function openFromDrive() {
 
 // Launched via Google Drive "Open with": Drive opens the app at OPEN_URL?state=...
 // Only acts when a valid open-state is present; otherwise the normal drop screen shows.
-async function handleOpenWithState() {
+function handleOpenWithState() {
   const st = parseOpenState(location.search);
   if (!st || st.action !== "open" || st.ids.length === 0) return;
+  // Drive launches the app by navigating to OPEN_URL, so nothing on this code
+  // path is a user gesture and the GIS token popup gets blocked by the browser.
+  // Ask for one click first; the click is what makes the popup allowed.
+  setStatus("Google Drive asked to open a file with this app.");
+  const row = document.createElement("p");
+  row.className = "drive-row";
+  const btn = document.createElement("button");
+  btn.className = "drive-btn";
+  btn.type = "button";
+  btn.textContent = "\u{1F4C2} Continue opening from Google Drive";
+  btn.addEventListener(
+    "click",
+    () => {
+      row.remove();
+      void openDriveFile(st);
+    },
+    { once: true },
+  );
+  row.append(btn);
+  dropEl.querySelector(".drop-inner")?.prepend(row);
+}
+
+async function openDriveFile(st: OpenWithState) {
   const id = st.ids[0];
   try {
     setStatus("Opening file from Google Drive…");
@@ -545,4 +568,4 @@ wireDrop();
 wireDrawing();
 wireToolbar();
 setStatus("");
-void handleOpenWithState();
+handleOpenWithState();
