@@ -61,7 +61,10 @@ export async function connect(): Promise<void> {
       tokenExpiresAt = Date.now() + Number(resp.expires_in ?? 3600) * 1000;
       resolve();
     };
-    tokenClient.requestAccessToken({ prompt: accessToken ? "" : "consent" });
+    // Always "" (never "consent"): forcing consent re-prompts the full grant
+    // screen on every page load, and Drive "Open with" is always a fresh load.
+    // Google still shows consent the first time, or when scopes actually change.
+    tokenClient.requestAccessToken({ prompt: "" });
   });
 }
 
