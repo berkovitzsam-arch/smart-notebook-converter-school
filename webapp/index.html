@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="SMART Notebook Converter is a free, browser-based tool for teachers. Convert PDFs and images into SMART Notebook (.notebook) files, and annotate existing notebooks with pen, highlighter, and text — then save them back to Google Drive." />
+    <title>SMART Notebook Converter — PDF & image to .notebook</title>
+  </head>
+  <body>
+    <div id="app">
+      <header>
+        <h1>SMART Notebook Converter</h1>
+        <p class="tagline">PDF / Image → SMART&nbsp;.notebook</p>
+        <p class="sub">SMART Notebook Converter is a free tool for teachers who use SMART Boards. Convert a PDF or image into a crisp <code>.notebook</code> file, or open an existing <code>.notebook</code> to add highlighter, pen, and text — then save it back. Everything runs in your browser; opening from and saving to Google Drive is optional.</p>
+      </header>
+
+      <section id="drop" class="drop">
+        <div class="drop-inner">
+          <p class="big">Drop a PDF, image, or .notebook here</p>
+          <p>or <label class="link">choose a file<input id="file" type="file" accept=".pdf,image/*,.notebook" hidden /></label></p>
+          <p class="drive-row"><button id="openDrive" class="drive-btn">📁 Open from Google Drive</button></p>
+          <p class="opt">Resolution
+            <select id="dpi">
+              <option value="200">200 DPI</option>
+              <option value="300" selected>300 DPI (recommended)</option>
+              <option value="400">400 DPI</option>
+            </select>
+          </p>
+        </div>
+      </section>
+
+      <section id="editor" hidden>
+        <div class="toolbar">
+          <button class="tool" data-tool="select">✋ Move</button>
+          <button class="tool active" data-tool="highlighter">🖍 Highlighter</button>
+          <button class="tool" data-tool="pen">✒️ Pen</button>
+          <button class="tool" data-tool="text">🆃 Text</button>
+          <input type="color" id="color" value="#ffff00" title="Color" />
+          <button id="undo" title="Undo last stroke">↶ Undo</button>
+          <span class="spacer"></span>
+          <button id="prev" class="nav">‹</button>
+          <span id="pageind">1 / 1</span>
+          <button id="next" class="nav">›</button>
+          <span class="spacer"></span>
+          <button id="reset">Start over</button>
+          <button id="download">⬇ Download</button>
+          <button id="saveDrive" class="primary">☁ Save to Drive</button>
+        </div>
+        <div id="stage" class="stage">
+          <canvas id="bg"></canvas>
+          <canvas id="ink"></canvas>
+        </div>
+      </section>
+
+      <div id="status" class="status"></div>
+    </div>
+    <div id="toast" class="toast" hidden></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

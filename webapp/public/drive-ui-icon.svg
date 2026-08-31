@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="SMART Notebook Converter">
+  <rect width="256" height="256" rx="48" fill="#2563eb"/>
+  <path d="M72 44h76l36 36v132H72z" fill="#fff"/>
+  <path d="M148 44v40h36" fill="#dbeafe"/>
+  <path d="M96 112h64M96 140h48" stroke="#2563eb" stroke-linecap="round" stroke-width="12"/>
+  <path d="m108 188 70-70 18 18-70 70-28 10z" fill="#facc15"/>
+  <path d="m178 118 9-9 18 18-9 9z" fill="#1e3a8a"/>
+</svg>

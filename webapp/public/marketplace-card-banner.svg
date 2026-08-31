@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="220" height="140" viewBox="0 0 220 140" role="img" aria-label="SMART Notebook Converter">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1d4ed8"/>
+      <stop offset="1" stop-color="#2563eb"/>
+    </linearGradient>
+  </defs>
+  <rect width="220" height="140" rx="14" fill="url(#bg)"/>
+  <circle cx="198" cy="18" r="42" fill="#60a5fa" opacity=".25"/>
+  <circle cx="16" cy="140" r="50" fill="#1e40af" opacity=".3"/>
+  <g transform="translate(18 28)">
+    <path d="M0 0h43l20 20v70H0z" fill="#fff"/>
+    <path d="M43 0v20h20" fill="#dbeafe"/>
+    <path d="M15 35h33M15 49h25" stroke="#2563eb" stroke-linecap="round" stroke-width="6"/>
+    <path d="m22 84 37-37 9 9-37 37-14 5z" fill="#facc15"/>
+    <path d="m59 47 5-5 9 9-5 5z" fill="#172554"/>
+  </g>
+  <text x="88" y="57" fill="#fff" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700">SMART Notebook</text>
+  <text x="88" y="77" fill="#fff" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700">Converter</text>
+  <text x="88" y="101" fill="#dbeafe" font-family="Arial, Helvetica, sans-serif" font-size="9.5">PDF &amp; images → .notebook</text>
+</svg>
